@@ -1,0 +1,14 @@
+<odoo>
+<record id="demo_motorcycle_registry_id1" model="motorcycle.registry">
+   <field name="current_mileage">250 </field>
+   <field name="date_registry">2024-08-21</field>
+</record>
+<record id="demo_motorcycle_registry_id2" model="motorcycle.registry">
+   <field name="current_mileage">6000</field>
+   <field name="date_registry">2024-08-23</field>
+</record>
+<record id="demo_motorcycle_registry_id3" model="motorcycle.registry">
+   <field name="current_mileage">5250</field>
+   <field name="date_registry">2024-09-21</field>
+</record>
+</odoo>

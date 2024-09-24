@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- search view -->
+<record id="patient_search" model="ir.ui.view">
+  <field name="name">hospital.patient.search</field>
+  <field name="model">hospital.patient</field>
+  <field name="arch" type="xml">
+     <search>
+                <field name="name" filter_domain="['|',('name','ilike','self'),('note','ilike','self')]"/>
+                 <field name="note"/>
+                <field name="age"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+               <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>
+               <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]"/>
+               <separator/>
+               <filter name="kids" string="Kids" domain="[('age', '&lt;=', 5)]"/>
+               <separator/>
+               <filter name="filter_archieved" string="Archieved" domain="[('active','=',False)]"/>
+               <group expand="0" string="Group By">
+                 <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}"/>
+              </group>
+              <searchpanel>
+                <field name="gender" icon="fa-users" select="multi" enable_counter="1"/>
+              </searchpanel>
+     </search>
+  </field>
+</record>
+
+
+<!-- list view -->
+<record id="patient_tree" model="ir.ui.view">
+  <field name="name">hospital.patient.tree</field>
+  <field name="model">hospital.patient</field>
+  <field name="arch" type="xml">
+     <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="date_of_birth" optional="show"/>
+                <field name="gender"/>
+                <field name="note" optional="hide"/>
+     </tree>
+  </field>
+</record>
+
+<!-- form view -->
+<record id="patient_form" model="ir.ui.view">
+  <field name="name">hospital.patient.form</field>
+  <field name="model">hospital.patient</field>
+  <field name="arch" type="xml">
+     <form>
+       <sheet>
+         <group>
+            <group>
+                <field name="name"/>
+                <field name="age"/>
+                   <field name="note"/>
+            </group>
+            <group>
+                <field name="gender"/>
+                <field name="date_of_birth"/>
+                <field name="active" invisible="1"/>
+            </group>
+          </group>
+       </sheet>
+       <div class="oe_chatter">
+        <field name="message_follower_ids" groups="base.group_user"/>
+        <field name="activity_ids"/>
+        <field name="message_ids"/>
+       </div>
+     </form>
+  </field>
+</record>
+
+
+<!-- actions -->
+ <record id="action_hospital_patient" model="ir.actions.act_window">
+<field name="name">Patients</field>
+<field name="type">ir.actions.act_window</field>
+<field name="res_model">hospital.patient</field>
+<field name="view_mode">tree,form,kanban</field>
+<field name="context">{'search_default_filter_male':1,'search_default_group_by_gender':1}</field>
+<field name="help" type="html">
+  <p class="o_view_nocontent_smiling_face">
+  Create a new Patient!!
+  </p>
+</field>
+</record>
+
+
+
+  <menuitem id="menu_hospital_root"
+   name="Hospital"
+   sequence="10"/>
+  <menuitem id="menu_frontdesk"
+   name="Patients"
+   parent="menu_hospital_root"
+   sequence="10"/>
+  <menuitem id="menu_patients"
+   name="Patients"
+   parent="menu_frontdesk"
+   action="action_hospital_patient"
+   sequence="10"/>
+
+</odoo>

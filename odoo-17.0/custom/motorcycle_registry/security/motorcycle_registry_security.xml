@@ -1,0 +1,17 @@
+<odoo>
+    <record model="ir.module.category" id="module_category_registry">
+        <field name="name">Registry</field>
+        <field name="sequence">15</field>
+    </record>
+
+    <record id="group_registry_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_registry"/>
+    </record>
+
+    <record id="group_registry_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="module_category_registry"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+    <record id="motorcycle_registry_view_tree" model="ir.ui.view">
+        <field name="name">motorcycle.registry.tree</field>
+        <field name="model">motorcycle.registry</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="certificate_title" />
+                <field name="current_mileage"/>
+                <field name="date_registry"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="registry_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="motorcycle_registry_view_form" model="ir.ui.view">
+        <field name="name">motorcycle.registry.form</field>
+        <field name="model">motorcycle.registry</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+        <group>
+            <group>
+                <field name="certificate_title"/>
+            </group>
+            <group>
+                <field name="date_registry"/>
+            </group>
+        </group>
+        <notebook>
+            <page string="Description">
+                <field name="registry_number"/>
+            </page>
+        </notebook>
+    </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_motorcycle_registry" model="ir.actions.act_window">
+        <field name="name">Motorcycle Register</field>
+        <field name="res_model">motorcycle.registry</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+
+        <menuitem id="menu_motorcycle_registry_root" name="Motorcycle Registry"/>
+       
+        <menuitem id="menu_motorcycle_registry_action" action="action_motorcycle_registry" name="Motorcycle Registry" parent="menu_motorcycle_registry_root"/>
+       
+
+</odoo>

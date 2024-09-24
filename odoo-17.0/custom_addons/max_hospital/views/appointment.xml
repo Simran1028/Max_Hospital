@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- search view -->
+<record id="patient_search" model="ir.ui.view">
+  <field name="name">hospital.appointment.search</field>
+  <field name="model">hospital.appointment</field>
+  <field name="arch" type="xml">
+     <search>
+                 <field name="patient_id"/> 
+     </search>
+  </field>
+</record>
+
+
+<!-- list view -->
+<record id="patient_tree" model="ir.ui.view">
+  <field name="name">hospital.appointment.tree</field>
+  <field name="model">hospital.appointment</field>
+  <field name="arch" type="xml">
+     <tree>
+               <field name="patient_id"/>  
+     </tree>
+  </field>
+</record>
+
+<!-- form view -->
+<record id="patient_form" model="ir.ui.view">
+  <field name="name">hospital.appointment.form</field>
+  <field name="model">hospital.appointment</field>
+  <field name="arch" type="xml">
+     <form>
+       <sheet>
+         <group>
+            <group>
+                <field name="patient_id"/>
+            </group>
+            <group>
+             
+            </group>
+          </group>
+       </sheet>
+       <div class="oe_chatter">
+        <field name="message_follower_ids" groups="base.group_user"/>
+        <field name="activity_ids"/>
+        <field name="message_ids"/>
+       </div>
+     </form>
+  </field>
+</record>
+
+
+<!-- actions -->
+ <record id="action_hospital_appointment" model="ir.actions.act_window">
+<field name="name">Appointment</field>
+<field name="type">ir.actions.act_window</field>
+<field name="res_model">hospital.appointment</field>
+<field name="view_mode">tree,form,kanban</field>
+<field name="context">{}</field>
+<field name="help" type="html">
+  <p class="o_view_nocontent_smiling_face">
+  Create a new Appointment!!
+  </p>
+</field>
+</record>
+
+
+
+
+  <menuitem id="menu_appointment"
+   name="Appointment"
+   parent="menu_frontdesk"
+   action="action_hospital_appointment"
+   sequence="10"/>
+
+</odoo>
