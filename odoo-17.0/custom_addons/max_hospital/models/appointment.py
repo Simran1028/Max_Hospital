@@ -48,3 +48,6 @@ class HospitalAppointment(models.Model):
     def action_cancelled(self):
        for rec in self:
           rec.state='cancel'
+    def action_draft(self):
+       for rec in self:
+          rec.state='draft'

@@ -46,9 +46,10 @@
   <field name="arch" type="xml">
      <form edit="1" create="1">
         <header>
-        <button name="action_in_consultation" string="In Consultation" type="object" state="draft"/>
-        <button name="action_done" string="Mark as Done" type="object" state="draft,in_consultation"/>
-        <button name="action_cancelled" string="Cancelled" type="object" state="draft,in_consultation"/>
+        <button name="action_in_consultation" data-hotkey="i" class="oe_highlight" string="In Consultation" type="object" state="draft"/>
+        <button name="action_done" class="oe_highlight" data-hotkey="m" string="Mark as Done" type="object" state="in_consultation"/>
+        <button name="action_draft" class="oe_highlight" data-hotkey="q" string="Reset to Draft" type="object" state="cancel"/>
+        <button name="action_cancelled" string="Cancelled" data-hotkey="z" type="object" state="draft,in_consultation"/>
         <!-- options="{'clickable':'1'}" -->
           <field name="state" widget="statusbar" nolabel="1"  statusbar_visible="draft,in_consultation,done"/>
 
