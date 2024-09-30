@@ -1,43 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 <!-- search view -->
-<record id="patient_search" model="ir.ui.view">
+<record id="appointment_search" model="ir.ui.view">
   <field name="name">hospital.appointment.search</field>
   <field name="model">hospital.appointment</field>
   <field name="arch" type="xml">
      <search>
                  <field name="patient_id"/> 
+                 <field name="appointment_time"/>
+                 <field name='booking_date'/>
+                  <field name="gender"/>
+               
      </search>
   </field>
 </record>
 
 
 <!-- list view -->
-<record id="patient_tree" model="ir.ui.view">
+<record id="appointment_tree" model="ir.ui.view">
   <field name="name">hospital.appointment.tree</field>
   <field name="model">hospital.appointment</field>
   <field name="arch" type="xml">
-     <tree>
-               <field name="patient_id"/>  
+     <tree decoration-success="state=='done'" sample="1" multi_edit="1">
+              <field name="patient_id"/>  
+              <field name="gender"/>
+              <field name="appointment_time"/>
+              <field name='booking_date' optional="show"/>
+              <field name="ref"/>
+              <field name="doctor_id" widget="many2one_avatar_user"/>
+              <field name="activity_ids" widget="list_activity" optional="hide"/>
+              <field name="state"
+              decoration-success="state=='done'"
+              decoration-danger="state=='cancel'"
+              decoration-info="state=='draft'"
+              decoration-warning="state=='in_consultation'"
+              widget="badge"/>
      </tree>
   </field>
 </record>
 
 <!-- form view -->
-<record id="patient_form" model="ir.ui.view">
+<record id="appointment_form" model="ir.ui.view">
   <field name="name">hospital.appointment.form</field>
   <field name="model">hospital.appointment</field>
   <field name="arch" type="xml">
-     <form>
+     <form edit="1" create="1">
+        <header>
+        <button name="action_in_consultation" string="In Consultation" type="object" state="draft"/>
+        <button name="action_done" string="Mark as Done" type="object" state="draft,in_consultation"/>
+        <button name="action_cancelled" string="Cancelled" type="object" state="draft,in_consultation"/>
+        <!-- options="{'clickable':'1'}" -->
+          <field name="state" widget="statusbar" nolabel="1"  statusbar_visible="draft,in_consultation,done"/>
+
+        </header>
        <sheet>
+       <div>
+       <h2>
+       <field name="priority" widget="priority"/>
+       </h2>
+       </div>
          <group>
             <group>
                 <field name="patient_id"/>
+                 <field name="gender"/>
+                  <field name="doctor_id" widget="many2one_avatar"/>
+                 <field name="ref" help="Reference of the patient!!"/>
             </group>
             <group>
-             
+              <field name="appointment_time"/>
+              <field name='booking_date' default_focus='1'/>
+              <button name="action_test" string="Object" confirm="The message will be printed in logs!!" type="object" class="oe_highlight"/>
+              <button name="%(max_hospital.action_hospital_patient)d" string="Action" confirm="Are you sure to open the patient action?" help="On clicking this, you will be redirected to the patient records!!" type="action" class="oe_highlight"/>
             </group>
           </group>
+          <notebook>
+             <page string="Prescription" name="prescription">
+                <field name="prescription" placeholder='Attach the prescription' options= "{'collaborative':true,'resizable':true}"/>
+             </page>
+
+             <page string="Pharmacy" name="Pharmacy">
+             </page>
+          </notebook>
        </sheet>
        <div class="oe_chatter">
         <field name="message_follower_ids" groups="base.group_user"/>
@@ -68,7 +111,7 @@
 
   <menuitem id="menu_appointment"
    name="Appointment"
-   parent="menu_frontdesk"
+   parent="menu_appointments"
    action="action_hospital_appointment"
    sequence="10"/>
 

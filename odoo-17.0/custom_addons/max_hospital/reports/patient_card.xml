@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <template id="report_patient_id_card">
+    <t t-call="web.basic_layout">
+     <t t-foreach ="docs" t-as="o"> 
+       <div class="page">
+        <div class="oe_structure">
+        <div class="row">
+         <div class="col-xs-8">
+             <table class="table table-condensed" style="border: 2px solid black;">
+                <tr>
+                    <td width="40%">
+                    <p style="text-align:center;padding-top:10px;">
+                      <!-- <img t-if="not o.image"
+                        t-arr-src="'/web/static/src/img/placeholder.png'" height="140"
+                        border="1" width="120"/>
+                      <img t-if="o.image"  
+                        t-arr-src="'data:image/png;base64,%s' % to_text(o.image)" height="140"
+                        border="1" width="120"/> -->
+                        hello
+                    </p>
+                    </td>
+                    <td width="60%">
+                      <table>
+                       <tr>
+                          <td colspan="3" class="text-center" style="text-align:center;padding:10px;" >
+                           <span t-field="o.name"/>
+                          </td> 
+                       </tr>
+                       <tr>
+                          <td style="text-align:center;padding:10px;">
+                             <span>
+                               <strong>Age:</strong>
+                             </span>
+                          </td>
+                          <td style="text-align:center;padding:10px;">
+                            <span>:</span>
+                          </td>
+                          <td style="text-align:center;padding:10px;">
+                          <span t-field="o.age"></span>
+                          </td>
+                       </tr>
+                       <tr>
+                          <td style="text-align:center;padding:10px;">
+                            <span>
+                              <strong>Reference:</strong>
+                            </span>
+                          </td>
+                          <td style="text-align:center;padding:10px;">
+                            <span>:</span>
+                          </td>
+                          <td style="text-align:center;padding:10px;">
+                            <span t-field="o.ref">
+                            </span>
+                          </td>
+                       </tr>
+                      </table>
+                    </td>
+                </tr>
+             </table>
+         </div>
+        </div>
+        </div>
+        
+       </div>
+     </t>
+    </t>
+ </template>
+</odoo>

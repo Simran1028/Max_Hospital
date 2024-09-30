@@ -14,7 +14,7 @@
                <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>
                <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]"/>
                <separator/>
-               <filter name="kids" string="Kids" domain="[('age', '&lt;=', 5)]"/>
+               <!-- <filter name="kids" string="Kids" domain="[('age', '&lt;=', 5)]"/> -->
                <separator/>
                <filter name="filter_archieved" string="Archieved" domain="[('active','=',False)]"/>
                <group expand="0" string="Group By">
@@ -38,6 +38,7 @@
                 <field name="age"/>
                 <field name="date_of_birth" optional="show"/>
                 <field name="gender"/>
+                <field name="ref"/>
                 <field name="note" optional="hide"/>
      </tree>
   </field>
@@ -58,6 +59,7 @@
             </group>
             <group>
                 <field name="gender"/>
+                <field name="ref"/>
                 <field name="date_of_birth"/>
                 <field name="active" invisible="1"/>
             </group>
@@ -101,5 +103,8 @@
    parent="menu_frontdesk"
    action="action_hospital_patient"
    sequence="10"/>
-
+  <menuitem id="menu_appointments"
+   name="Appointments"
+   parent="menu_hospital_root"
+   sequence="10"/>
 </odoo>
