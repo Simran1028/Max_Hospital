@@ -13,6 +13,9 @@ class HospitalAppointment(models.Model):
     ref=fields.Char(string='Reference')
     prescription = fields.Html(string='Prescription')
     doctor_id=fields.Many2one('res.users',string="Doctor")
+    pharmacy_line_ids=fields.One2many('appointment.pharmacy.lines','appointment_id',string="Pharmacy Lines")
+    hide_sales_price=fields.Boolean(string="Hide Sales Price")
+    
     priority=fields.Selection([
         ('0','Normal'),
         ('1','Low'),
@@ -51,3 +54,13 @@ class HospitalAppointment(models.Model):
     def action_draft(self):
        for rec in self:
           rec.state='draft'
+
+
+class AppointmentPharmacyLines(models.Model):
+   _name='appointment.pharmacy.lines'
+   _description="Appointment Pharmacy Lines"
+
+   product_id=fields.Many2one('product.product',required=True)
+   price_unit=fields.Float(string='Price', related='product_id.list_price')
+   qty=fields.Integer(string='Quantity',default=1)
+   appointment_id=fields.Many2one('hospital.appointment',string="Appointment")

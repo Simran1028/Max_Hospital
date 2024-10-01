@@ -17,6 +17,7 @@ class HospitalPatient(models.Model):
     ref=fields.Char(string="Reference")
     note=fields.Text(string='Description',tracking=True)
     active=fields.Boolean(string="Active",default=True)
+    image=fields.Image(string="Image")
 
     @api.depends('date_of_birth')
     def _compute_age(self):

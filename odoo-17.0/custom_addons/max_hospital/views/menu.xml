@@ -51,6 +51,7 @@
   <field name="arch" type="xml">
      <form>
        <sheet>
+        <field name="image" widget="image" class="oe_avatar"/>
          <group>
             <group>
                 <field name="name"/>
@@ -105,6 +106,10 @@
    sequence="10"/>
   <menuitem id="menu_appointments"
    name="Appointments"
+   parent="menu_hospital_root"
+   sequence="10"/>
+   <menuitem id="menu_configuration"
+   name="Configurations"
    parent="menu_hospital_root"
    sequence="10"/>
 </odoo>
