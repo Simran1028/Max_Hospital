@@ -3,3 +3,4 @@ access_hospital_patient,access_hospital_patient,max_hospital.model_hospital_pati
 access_hospital_appointment,access_hospital_appointment,max_hospital.model_hospital_appointment,base.group_user,1,1,1,1
 access_appointment_pharmacy_lines,access_appointment_pharmacy_lines,max_hospital.model_appointment_pharmacy_lines,base.group_user,1,1,1,1
 access_patient_tag,access_patient_tag,max_hospital.model_patient_tag,base.group_user,1,1,1,1
+access_cancel_appointments,access_cancel_appointments,max_hospital.model_cancel_appointments,base.group_user,1,1,1,1

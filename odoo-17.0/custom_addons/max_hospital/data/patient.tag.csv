@@ -1,0 +1,5 @@
+id,name,active
+patient_tag_dermatologist,Dermatologist,True
+patient_tag_opd,OPD,False
+patient_tag_ENT,ENT,True
+patient_tag_dentist,Dentist,True

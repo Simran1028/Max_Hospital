@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="patient_tag_operation" model="patient.tag">
+        <field name="name">Operation</field>
+    </record>
+    <record id="patient_tag_emengency" model="patient.tag">
+        <field name="name">Emergency</field>
+    </record>
+    <record id="patient_tag_consult" model="patient.tag">
+        <field name="name">Consult</field>
+        <field name="active" eval="False"/>
+    </record>
+    </odoo>

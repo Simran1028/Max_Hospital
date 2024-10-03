@@ -18,6 +18,7 @@ class HospitalPatient(models.Model):
     note=fields.Text(string='Description',tracking=True)
     active=fields.Boolean(string="Active",default=True)
     image=fields.Image(string="Image")
+    tag_ids=fields.Many2many('patient.tag',string="Tags")
 
     @api.depends('date_of_birth')
     def _compute_age(self):

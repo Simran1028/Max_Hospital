@@ -62,6 +62,7 @@
                 <field name="gender"/>
                 <field name="ref"/>
                 <field name="date_of_birth"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
                 <field name="active" invisible="1"/>
             </group>
           </group>
@@ -112,4 +113,9 @@
    name="Configurations"
    parent="menu_hospital_root"
    sequence="10"/>
+   <menuitem id="menu_cancel_appointments"
+   name="Cancel Appointments"
+   parent="menu_appointments"
+   action="action_cancel_appointments"
+   sequence="20"/>
 </odoo>
